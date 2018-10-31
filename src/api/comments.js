@@ -1,6 +1,7 @@
 export default [
   {
     "id": 1,
+    "questionId": 1,
     "displayId": 11,
     "creatorId": 1,
     "createdAt": "2018-10-19T16:23:26.913Z",
@@ -12,12 +13,13 @@ export default [
     "submittedAt": null,
     "closerId": null,
     "closedAt": null,
-    "questionText": "What was the name of Danny's gang in 'Grease'?",
+    "comment": "I don't know that movie",
     "deleterId": null,
     "deletedAt": null
   },
   {
     "id": 2,
+    "questionId": 1,
     "displayId": 12,
     "creatorId": 2,
     "createdAt": "2018-10-19T16:23:26.913Z",
@@ -29,14 +31,15 @@ export default [
     "submittedAt": "2018-10-28T20:35:57.869Z",
     "closerId": 1,
     "closedAt": "2018-10-28T20:35:57.869Z",
-    "questionText": "Que le pasa a Lupita?",
+    "comment": "neither do I",
     "deleterId": null,
     "deletedAt": null
   },
   {
-    "id": 2,
+    "id": 3,
+    "questionId": 2,
     "displayId": 12,
-    "creatorId": 2,
+    "creatorId": 3,
     "createdAt": "2018-10-19T16:23:26.913Z",
     "lastEditorId": 4,
     "lastEditedAt": "2018-10-28T20:27:50.869Z",
@@ -46,7 +49,7 @@ export default [
     "submittedAt": "2018-10-28T20:27:55.869Z",
     "closerId": null,
     "closedAt": null,
-    "questionText": "Cuanto es 2x2?",
+    "comment": "Huh?",
     "deleterId": null,
     "deletedAt": null
   }
