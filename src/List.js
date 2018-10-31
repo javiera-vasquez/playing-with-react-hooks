@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { map, reduce, find } from "lodash";
 
-import answers from "./answers";
-import questions from "./questions";
-import users from "./users";
+import answers from "./api/answers";
+import questions from "./api/questions";
+import users from "./api/users";
+import comments from "./api/comments";
 
 import ListItem from "./ListItem";
 
@@ -23,7 +24,7 @@ const mergeCollection = (collection, users) =>
 const getQuestions = (questions, users) => mergeCollection(questions, users);
 const getAswers = (answers, users) => mergeCollection(answers, users);
 
-class List extends React {
+class List extends Component {
   constructor(props) {
     super(props);
 
