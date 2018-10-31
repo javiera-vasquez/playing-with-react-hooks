@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { map, reduce, find } from "lodash";
 
-import answers from "./api/answers";
-import questions from "./api/questions";
-import users from "./api/users";
-import comments from "./api/comments";
+import answersRespose from "./api/answers";
+import questionsRespose from "./api/questions";
+import usersRespose from "./api/users";
+import commentsRespose from "./api/comments";
 
 import ListItem from "./ListItem";
 
@@ -21,34 +21,17 @@ const mergeCollection = (collection, users) =>
     {}
   );
 
-const getQuestions = (questions, users) => mergeCollection(questions, users);
-const getAswers = (answers, users) => mergeCollection(answers, users);
+const List = () => {
+  const [answers] = useState(mergeCollection(answersRespose, usersRespose));
+  const [questions] = useState(mergeCollection(questionsRespose, usersRespose));
 
-class List extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      answers: {},
-      questions: {}
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      answers: getAswers(answers, users),
-      questions: getQuestions(questions, users)
-    });
-  }
-
-  render() {
-    const { answers, questions } = this.state;
-    return map(questions, question => {
+  return (
+    map(questions, question => {
       return (
         <ListItem user={question.user.name} content={question.questionText} />
       );
-    });
-  }
+    })
+  )
 }
 
 export default List;
