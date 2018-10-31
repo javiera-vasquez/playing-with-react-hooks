@@ -1,0 +1,22 @@
+import { reduce, find } from "lodash";
+
+export const mergeCollection = (collection, users) =>
+  reduce(
+    collection,
+    (acc, item) => ({
+      ...acc,
+      [item.id]: {
+        ...item,
+        user: find(users, user => item.creatorId === user.id)
+      }
+    }),
+    {}
+  );
+
+export const setDateFormat = (dateToFormat, locale = 'en-US') => {
+  const options = {
+    month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'
+  };
+  const date = new Date(dateToFormat);
+  return new Intl.DateTimeFormat(locale, options).format(date);
+}
