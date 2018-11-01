@@ -14,9 +14,14 @@ export const mergeCollection = (collection, users) =>
   );
 
 export const setDateFormat = (dateToFormat, locale = 'en-US') => {
+  if(!dateToFormat) return null;
   const options = {
     month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'
   };
   const date = new Date(dateToFormat);
   return new Intl.DateTimeFormat(locale, options).format(date);
 }
+
+export const dateEventsToTrack = [
+  'createdAt', 'lastEditedAt', 'publishedAt', 'submittedAt', 'closedAt'
+];

@@ -1,11 +1,14 @@
 import React from "react";
 import "./ListItem.css";
 
-const ListItem = props => {
+const ListItem = ({...props}) => {
+  const { type, user, content, date } = props;
   return (
-    <div class="list-item">
-      <div class="list-item__user">{props.user}</div>
-      <div class="list-item__content">{props.content}</div>
+    <div class={`list-item ${type}`}>
+      <div class="list-item__user-creation">
+        <strong>{user}</strong>{date && <span>{date}</span>}
+      </div>
+      <div class="list-item__content">{content}</div>
     </div>
   );
 };
