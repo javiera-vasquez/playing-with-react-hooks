@@ -1,18 +1,21 @@
 import { reduce, find } from "lodash";
 
-export const mergeCollection = (collection, users, props = {}) =>
+export const mergeCollection = (collection, users, customProps = false) => (
   reduce(
     collection,
     (acc, item) => ({
       ...acc,
       [item.id]: {
         ...item,
-        ...props,
+        ...(customProps ? reduce(customProps, (acc, prop) => {
+          return {...acc, [prop.key]: prop.cb(item)}
+        }, {}) : {}),
         user: find(users, user => item.creatorId === user.id)
       }
     }),
     {}
-  );
+  )
+);
 
 export const setDateFormat = (dateToFormat, locale = 'en-US') => {
   if(!dateToFormat) return null;
