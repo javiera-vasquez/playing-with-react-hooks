@@ -26,6 +26,8 @@
 .list-item.awnser {
   display: none;
   background-color: rgba(0, 0, 0, 0.01);
+  box-shadow: inset 0 -1px 0 #fff;
+  border-radius: 0 0 3px 3px;
 }
 
 .list-item.awnser.active {
@@ -39,4 +41,43 @@
 
 .list-item .list-item__user-creation strong {
   margin-right: 10px;
+}
+
+.list-item__comments-wrapper {
+  padding: 10px 0 0;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.list-item__comments-wrapper input {
+  width: calc(100% - 12px);
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+  transition: all .2s ease-out;
+}
+
+.list-item__comments-wrapper input:focus {
+  outline: none;
+  border: 1px solid rgba(43, 79, 79, 0.25);
+  box-shadow: inset 0 -1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.list-item__comments {
+  position: relative;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.list-item__comments strong {
+  margin-right: 5px;
+}
+
+.list-item__comments__date {
+  top: 0;
+  right: 0;
+  position: absolute;
+  color: #869596;
 }

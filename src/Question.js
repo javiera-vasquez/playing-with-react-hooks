@@ -1,6 +1,7 @@
 import React from "react";
-import { map, reduce } from "lodash";
+import { map, reduce, find } from "lodash";
 
+import usersRespose from "./api/users";
 import ListItem from "./ListItem";
 import AddComment from "./AddComment";
 
@@ -41,14 +42,29 @@ const Question = ({
           content={answer.answerText}
           date={getlastEdit(answer)}
           child={
-            <>
+            <div className="list-item__comments-wrapper">
               <AddComment
-                id={answer.id} cb={comment => onAddCommentCb(comment)}
+                id={question.comments.length + 1}
+                cb={comment => onAddCommentCb(comment)}
+                questionId={question.id}
+                creatorId={activeUser.id}
               />
-              { answer.comments && map(answer.comments, v => (
-                <span>{v.comment}</span>
-              )) }
-            </>
+              { !!question.comments.length &&
+                map(question.comments, comment => {
+                  const user = find(usersRespose, {id: comment.creatorId});
+                  if(user.organization !== activeUser.organization) return null;
+                  return (
+                    <div className="list-item__comments" key={comment.id}>
+                    <strong>{user.name}:</strong>
+                    <span>{comment.comment}</span>
+                    <div className="list-item__comments__date">
+                      {setDateFormat(comment.createdAt)}
+                    </div>
+                  </div>
+                  )
+                })
+              }
+            </div>
           }
         />
       }

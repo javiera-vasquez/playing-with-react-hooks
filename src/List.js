@@ -20,7 +20,6 @@ const initialState = {
   )
 }
 
-
 const questionsReducer = (state, action) => {
   switch (action.type) {
     case 'SET_ACTIVE_QUESTION':
@@ -29,7 +28,18 @@ const questionsReducer = (state, action) => {
         activeQuestion: action.id
       }
     case 'ADD_COMMENT':
-      return state;
+      return {
+        ...state,
+        questionsList: {
+          ...state.questionsList,
+          [action.questionId]: {
+            ...state.questionsList[action.questionId],
+            comments: [
+              ...state.questionsList[action.questionId].comments, action.value
+            ]
+          }
+        }
+      };
     default:
       return state;
   }
@@ -53,9 +63,7 @@ const Questions = () => {
         </select>
       </div>
       <div className="questions-list">
-        { map(questions.questionsList, question => {
-          debugger;
-          return (
+        { map(questions.questionsList, question => (
             <Question
               key={question.id}
               activeUser={find(usersRespose, { id: activeUser })}
@@ -63,10 +71,11 @@ const Questions = () => {
               answer={find(answers, { questionId: question.id })}
               isActive={questions.activeQuestion === question.id}
               onClickCb={id => dispatch({type: 'SET_ACTIVE_QUESTION', id})}
-              onAddCommentCb={() => {}}
+              onAddCommentCb={({questionId, value}) => {
+                dispatch({type: 'ADD_COMMENT', questionId, value })
+              }}
             />
-          );
-        }) }
+        )) }
       </div>
     </>
   )

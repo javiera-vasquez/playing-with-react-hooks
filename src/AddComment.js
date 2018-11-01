@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-const AddComment = ({ id, cb }) => {
+const AddComment = ({ id, cb, questionId, creatorId }) => {
   const [inputValue, setImputValue] = useState('');
-
   return (
     <form onSubmit={e => {
       cb({
-        awnserId: id,
-        value: {comment: inputValue, createdAt: new Date(), }
+        questionId,
+        value: {
+          comment: inputValue, createdAt: new Date(), id, creatorId
+        }
       });
+      setImputValue('');
       e.preventDefault();
     }}>
       <input
@@ -16,6 +18,7 @@ const AddComment = ({ id, cb }) => {
         value={inputValue}
         onChange={e => setImputValue(e.target.value)}
         className="add-comment-input"
+        placeholder="Add comment…"
       />
     </form>
   )
