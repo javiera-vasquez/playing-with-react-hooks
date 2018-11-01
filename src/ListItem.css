@@ -1,0 +1,42 @@
+.list-item {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6
+}
+
+.list-item.question {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.list-item.question::after {
+  right: 10px;
+  top: 20px;
+  content: "\003e";
+  position: absolute;
+  transform: rotate(90deg);
+  transition: all .2s ease-out;
+}
+
+.list-item.question.active::after {
+  transform: rotate(-90deg);
+}
+
+.list-item.awnser {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.list-item.awnser.active {
+  display: block;
+}
+
+.list-item .list-item__user-creation {
+  color: #869596;
+  font-size: 14px;
+}
+
+.list-item .list-item__user-creation strong {
+  margin-right: 10px;
+}

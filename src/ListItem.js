@@ -2,13 +2,13 @@ import React from "react";
 import "./ListItem.css";
 
 const ListItem = ({...props}) => {
-  const { type, user, content, date } = props;
+  const { type, user, content, date, active } = props;
   return (
-    <div class={`list-item ${type}`}>
-      <div class="list-item__user-creation">
+    <div className={`list-item ${type} ${active ? 'active' : ''}` }>
+      <div className="list-item__user-creation">
         <strong>{user}</strong>{date && <span>{date}</span>}
       </div>
-      <div class="list-item__content">{content}</div>
+      <div className="list-item__content">{content}</div>
     </div>
   );
 };
