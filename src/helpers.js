@@ -1,12 +1,13 @@
 import { reduce, find } from "lodash";
 
-export const mergeCollection = (collection, users) =>
+export const mergeCollection = (collection, users, props = {}) =>
   reduce(
     collection,
     (acc, item) => ({
       ...acc,
       [item.id]: {
         ...item,
+        ...props,
         user: find(users, user => item.creatorId === user.id)
       }
     }),

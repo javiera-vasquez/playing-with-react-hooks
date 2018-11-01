@@ -14,9 +14,9 @@ code {
     monospace;
 }
 
-.questions-list {
+.questions-list, .active-user {
   width: 60%;
-  margin: 50px auto 0;
+  margin: 25px auto 0;
 }
 
 .question-wrapper {
