@@ -9,7 +9,7 @@ import commentsRespose from "./api/comments";
 import { mergeCollection } from "./helpers";
 import Question from "./Question";
 
-const initialState = {
+export const initialState = {
   activeQuestion: 1,
   questionsList: mergeCollection(questionsRespose, usersRespose,
     [ {key: 'comments', cb: item => (
@@ -20,7 +20,7 @@ const initialState = {
   )
 }
 
-const questionsReducer = (state, action) => {
+export const questionsReducer = (state, action) => {
   switch (action.type) {
     case 'SET_ACTIVE_QUESTION':
       return {

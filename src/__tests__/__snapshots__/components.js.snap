@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Init Question component Need to render() 1`] = `
+<div
+  className="question-wrapper active"
+  onClick={[Function]}
+>
+  <div
+    className="list-item question active"
+  >
+    <div
+      className="list-item__user-creation"
+    >
+      <strong>
+        Alonso Armani
+      </strong>
+      <span>
+        Oct 28, 4:27 PM
+      </span>
+    </div>
+    <div
+      className="list-item__content"
+    >
+      What was the name of Danny's gang in 'Grease'?
+    </div>
+  </div>
+</div>
+`;

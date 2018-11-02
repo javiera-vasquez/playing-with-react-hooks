@@ -29,3 +29,9 @@ export const setDateFormat = (dateToFormat, locale = 'en-US') => {
 export const dateEventsToTrack = [
   'createdAt', 'lastEditedAt', 'publishedAt', 'submittedAt', 'closedAt'
 ];
+
+export const getlastEdit = (list, events = dateEventsToTrack) => {
+  return setDateFormat(
+    reduce(events, (acc, e) => list[e] !== null ? list[e] : acc, undefined)
+  )
+}

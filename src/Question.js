@@ -1,21 +1,15 @@
 import React from "react";
-import { map, reduce, find } from "lodash";
+import { map, find } from "lodash";
 
 import usersRespose from "./api/users";
 import ListItem from "./ListItem";
 import AddComment from "./AddComment";
 
-import { setDateFormat, dateEventsToTrack } from "./helpers";
+import { setDateFormat, getlastEdit } from "./helpers";
 
 const Question = ({
   question, answer, isActive, onClickCb, activeUser, onAddCommentCb
 }) => {
-  const getlastEdit = (list, events = dateEventsToTrack) => {
-    return setDateFormat(
-      reduce(events, (acc, e) => list[e] !== null ? list[e] : acc, undefined)
-    )
-  }
-
   return (
     <div
       className={`question-wrapper ${isActive ? 'active' : ''}`}
