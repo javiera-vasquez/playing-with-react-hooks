@@ -40,7 +40,7 @@ describe('Init ListItem component', () => {
         child={<span>hola</span>}
       />
     ).toJSON();
-
+    expect(component).toMatchSnapshot();
   })
 })
 
