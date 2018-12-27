@@ -1,3 +1,9 @@
+Javiera Vasquez
++569827670063
+javiera.vasg@gmail.com
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
